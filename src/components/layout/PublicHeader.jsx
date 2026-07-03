@@ -17,7 +17,7 @@ export default function PublicHeader() {
     <header className="lp-header">
       <div className="hb-franja-top" />
       <div className="lp-nav">
-        <button className="lp-brand" onClick={() => navigate('/')} aria-label="Banco Andino — Inicio">
+        <button className="lp-brand" onClick={() => navigate('/')} aria-label="Surgir — Inicio">
           <Logo size={38} variant="dark" subtitle="BANCA DIGITAL" />
         </button>
 

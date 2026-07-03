@@ -34,7 +34,7 @@ export default function LandingPage() {
       <section className="lp-hero">
         <div className="lp-hero-inner">
           <div className="lp-hero-text">
-            <span className="lp-hero-tag">Banca Digital · Banco Andino</span>
+            <span className="lp-hero-tag">Banca Digital · Surgir</span>
             <h1>Tu banco digital, <br />inspirado en los Andes</h1>
             <p>
               Abre tu cuenta, paga tus créditos y transfiere tu dinero en minutos.
@@ -102,7 +102,7 @@ export default function LandingPage() {
       {/* ===== BENEFICIOS ===== */}
       <section className="lp-section" id="beneficios">
         <div className="lp-section-head">
-          <h2>¿Por qué Banco Andino?</h2>
+          <h2>¿Por qué Surgir?</h2>
           <p>Una banca cercana, segura y hecha para el Perú.</p>
         </div>
         <div className="lp-benefits">

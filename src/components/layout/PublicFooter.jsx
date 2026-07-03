@@ -7,7 +7,7 @@ const COLS = [
     links: ['Cuenta de Ahorros', 'Cuenta Sueldo', 'Crédito de Consumo', 'Crédito Microempresa', 'Tarjeta de Débito'],
   },
   {
-    title: 'Banco Andino',
+    title: 'Surgir',
     links: ['Nosotros', 'Trabaja con nosotros', 'Memoria anual', 'Sostenibilidad', 'Sala de prensa'],
   },
   {
@@ -45,7 +45,7 @@ export default function PublicFooter() {
           <h4>Contacto</h4>
           <ul className="lp-contact">
             <li><Phone size={15} /> Banca telefónica: (01) 311-9000</li>
-            <li><Mail size={15} /> contacto@bancoandino.pe</li>
+            <li><Mail size={15} /> contacto@surgir.pe</li>
             <li><MapPin size={15} /> Av. Los Andes 123, Lima</li>
           </ul>
         </div>
@@ -53,7 +53,7 @@ export default function PublicFooter() {
 
       <div className="hb-franja-top" />
       <div className="lp-footer-legal">
-        © {2026} Banco Andino — Banca por Internet. Demo educativo. Supervisado por la SBS.
+        © {2026} Surgir — Banca por Internet. Demo educativo. Supervisado por la SBS.
       </div>
     </footer>
   )

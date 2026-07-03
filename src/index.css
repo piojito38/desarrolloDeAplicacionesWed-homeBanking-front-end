@@ -16,28 +16,19 @@
   --hb-border: #f0e6ea;
   --hb-green: #16a34a;
   --hb-amber: #d97706;
-  --hb-shadow: 0 1px 3px rgba(16, 24, 40, 0.08), 0 1px 2px rgba(16, 24, 40, 0.06);
-  --hb-radius: 14px;
+  --hb-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+  --hb-shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --hb-radius: 16px;
 
-  /* Gradiente y franja tejida característicos de la marca */
-  --hb-grad: linear-gradient(110deg, #8e24aa, #e2132b 55%, #f7941e);
-  --hb-grad-login: linear-gradient(135deg, #8e24aa, #e2132b 50%, #f7941e);
-  --hb-franja: repeating-linear-gradient(
-    90deg,
-    #e2132b 0 14px,
-    #fbc02d 14px 22px,
-    #00a9a5 22px 36px,
-    #8e24aa 36px 44px,
-    #4caf50 44px 58px,
-    #e6398b 58px 66px,
-    #f7941e 66px 80px
-  );
+  /* Colores Surgir */
+  --hb-grad: #e2132b;
+  --hb-grad-login: #fad296;
+  --hb-franja: transparent;
 }
 
 /* Franja tejida superior reutilizable */
 .hb-franja-top {
-  height: 6px;
-  background: var(--hb-franja);
+  display: none;
 }
 
 * { box-sizing: border-box; }
@@ -217,9 +208,14 @@ button {
   border-radius: var(--hb-radius);
   box-shadow: var(--hb-shadow);
   border: 1px solid var(--hb-border);
-  padding: 20px;
+  padding: 24px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.hb-card + .hb-card { margin-top: 16px; }
+.hb-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--hb-shadow-hover);
+}
+.hb-card + .hb-card { margin-top: 20px; }
 .hb-card-title {
   font-size: 15px;
   font-weight: 700;
@@ -265,15 +261,19 @@ button {
   align-items: center;
   gap: 8px;
   border: none;
-  border-radius: 9px;
-  padding: 10px 16px;
+  border-radius: 999px;
+  padding: 12px 20px;
   font-size: 14px;
   font-weight: 600;
   background: var(--hb-red);
   color: #fff;
-  transition: background 0.15s, opacity 0.15s;
+  transition: all 0.2s ease;
 }
-.hb-btn:hover { background: var(--hb-red-dark); }
+.hb-btn:hover:not(:disabled) { 
+  background: var(--hb-red-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(226, 19, 43, 0.25);
+}
 .hb-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 .hb-btn-sm { padding: 6px 11px; font-size: 12.5px; border-radius: 7px; }
 .hb-btn-ghost {
@@ -331,7 +331,7 @@ button {
 .hb-input:focus, .hb-select:focus {
   outline: none;
   border-color: var(--hb-red);
-  box-shadow: 0 0 0 3px rgba(227,6,19,0.12);
+  box-shadow: 0 0 0 4px rgba(226,19,43,0.15);
 }
 .hb-grid-2 {
   display: grid;
@@ -381,18 +381,35 @@ button {
   min-height: 100vh;
   display: grid;
   place-items: center;
-  padding: 20px;
-  background: var(--hb-grad-login);
+  padding: 60px 20px 20px;
+  background: #fad296; /* Light orange matching the hero */
   position: relative;
 }
 .hb-login-bg::before {
-  content: '';
+  content: 'Somos parte de Santander \a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0 Únete a SURGIR';
+  white-space: pre;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 8px;
-  background: var(--hb-franja);
+  height: 40px;
+  background: var(--hb-red);
+}
+.hb-login-bg::after {
+  content: '';
+  position: absolute;
+  top: 40px; left: 0; right: 0;
+  height: 60px;
+  background: white;
 }
 .hb-login-card {
+  position: relative;
+  z-index: 10;
   background: #fff;
   border-radius: 18px;
   box-shadow: 0 18px 50px rgba(0,0,0,0.3);
@@ -401,11 +418,7 @@ button {
   max-width: 400px;
 }
 .hb-login-franja {
-  height: 6px;
-  border-radius: 6px;
-  background: var(--hb-franja);
-  background-size: 80px;
-  margin-bottom: 22px;
+  display: none;
 }
 .hb-login-head {
   text-align: center;
@@ -452,11 +465,15 @@ button {
   border: 1px solid var(--hb-border);
   border-radius: var(--hb-radius);
   box-shadow: var(--hb-shadow);
-  transition: transform 0.12s, box-shadow 0.12s;
+  transition: all 0.2s ease;
   text-align: left;
   width: 100%;
 }
-.hb-quick-card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(227,6,19,0.15); }
+.hb-quick-card:hover { 
+  transform: translateY(-4px); 
+  box-shadow: var(--hb-shadow-hover);
+  border-color: var(--hb-red-light);
+}
 .hb-quick-icon {
   width: 46px; height: 46px;
   border-radius: 50%;
@@ -560,8 +577,8 @@ button {
 
 /* ---- Hero ---- */
 .lp-hero {
-  background: var(--hb-grad);
-  color: #fff;
+  background: #fad296;
+  color: var(--hb-text);
   position: relative;
   overflow: hidden;
 }
@@ -570,7 +587,7 @@ button {
   position: absolute;
   right: -120px; top: -120px;
   width: 420px; height: 420px;
-  background: radial-gradient(circle, rgba(255,255,255,0.18), transparent 70%);
+  background: radial-gradient(circle, rgba(255,255,255,0.4), transparent 70%);
   border-radius: 50%;
 }
 .lp-hero-inner {
@@ -586,7 +603,8 @@ button {
 .lp-hero-text p { margin-left: auto; margin-right: auto; }
 .lp-hero-tag {
   display: inline-block;
-  background: rgba(255,255,255,0.18);
+  background: var(--hb-red);
+  color: #fff;
   padding: 5px 14px;
   border-radius: 999px;
   font-size: 12.5px;
@@ -622,10 +640,10 @@ button {
   border: none;
   cursor: pointer;
 }
-.lp-btn-light { background: #fff; color: var(--hb-red); }
-.lp-btn-light:hover { background: #fff0f1; text-decoration: none; }
-.lp-btn-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.7); }
-.lp-btn-outline:hover { background: rgba(255,255,255,0.14); text-decoration: none; }
+.lp-btn-light { background: var(--hb-red); color: #fff; }
+.lp-btn-light:hover { background: var(--hb-red-dark); text-decoration: none; }
+.lp-btn-outline { background: transparent; color: var(--hb-red); border: 2px solid var(--hb-red); }
+.lp-btn-outline:hover { background: var(--hb-red-light); text-decoration: none; }
 .lp-btn-primary { background: var(--hb-red); color: #fff; }
 .lp-btn-primary:hover { background: var(--hb-red-dark); }
 
@@ -732,9 +750,12 @@ button {
   border-radius: 16px;
   padding: 26px 22px;
   box-shadow: var(--hb-shadow);
-  transition: transform 0.15s, box-shadow 0.15s;
+  transition: all 0.2s ease;
 }
-.lp-product:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.10); }
+.lp-product:hover { 
+  transform: translateY(-6px); 
+  box-shadow: var(--hb-shadow-hover); 
+}
 .lp-product-icon {
   width: 54px; height: 54px;
   border-radius: 14px;
@@ -760,8 +781,8 @@ button {
 
 /* ---- Promo ---- */
 .lp-promo {
-  background: var(--hb-grad-login);
-  color: #fff;
+  background: #fdf2e9; /* Light soft orange */
+  color: var(--hb-text);
 }
 .lp-promo-inner {
   max-width: 1180px;
@@ -777,7 +798,8 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: rgba(255,255,255,0.2);
+  background: var(--hb-red);
+  color: #fff;
   padding: 5px 12px;
   border-radius: 999px;
   font-size: 12.5px;
